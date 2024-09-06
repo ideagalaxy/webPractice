@@ -11,6 +11,9 @@ class Question(models.Model):
     quesiton_text = models.CharField(max_length=200) #최대질문 200자까지
     pub_date = models.DateTimeField(auto_now_add=True)
 
+    def was_published_recently(self):
+        return self.pub
+
     def __str__(self) -> str:
         return f"질문 : {self.quesiton_text}, 날짜 : {self.pub_date}"
 
