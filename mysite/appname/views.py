@@ -13,4 +13,9 @@ def index(request):
 
 
 def some_url(request):
-    return HttpResponse("SomeUrl을 구현해 봤습니다!!")
+
+    context = {'first_question' : "sibal"}
+    #output = ", ".join([q.quesiton_text for q in latest_question_list])
+    #print(output)
+
+    return render(request, './appname/index.html',context)

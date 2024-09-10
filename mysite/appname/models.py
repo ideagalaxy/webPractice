@@ -24,3 +24,24 @@ class Choice(models.Model):
 
     def __str__(self) -> str:
         return self.choice_text
+    
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    pass
+
+class Person(models.Model):
+    member = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.member.username
+    
+class BankBook(models.Model):
+    member = models.ForeignKey(Person, on_delete=models.CASCADE)
+    balance_won = models.IntegerField(default = 0)
+    balance_dol = models.IntegerField(default = 0)
+    balance_yen = models.IntegerField(default = 0)
+    balance_pes = models.IntegerField(default = 0)
+
+
